@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Clothes Size Predictor App</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="col-md-9 col-sm-9 " style="margin:auto; margin-top:150px;">
+        <h3>Classify the Clothes</h3><hr>
+        <form action="/predict" method = "post">
+            <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Ticket Class (1, 2, or 3)</label>
+                    <input type="text" name="Pclass" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Sex Male=0, Female=1 </label>
+                    <input type="text" name="Sex" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Age</label>
+                    <input type="text" name="Age" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput"># of Siblings / spouses</label>
+                    <input type="text" name="SibSp" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput"># of Parents / Children</label>
+                    <input type="text" name="Parch" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Passenger Fare</label>
+                    <input type="text" name="Fare" class="form-control">
+                </div>
+            </div>
+            
+            </div>
+           <button type="reset" class="btn btn-danger">Clean</button>
+           <button type="submit" class="btn btn-success">Predict Size</button>
+        </form><br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Classification Method</th>
+                <!-- <th scope="col">Accuracy Score</th>                       -->
+                <th scope="col">Classification Results</th>                    
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Random Forest</th>
+                    <!-- <td>% {{ accuracy_rf }}</td> -->
+                    {% if predict_rf == 0 %}
+           	    <td style="color:red; font-weight:600;">Did not Survive</td>                            
+                       
+                    {% else %}
+                <td style="color:red; font-weight:600;">Survived</td>
+                    {% endif %}
+                </tr>              
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
